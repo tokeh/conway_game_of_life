@@ -2,7 +2,7 @@ package com.tokeh.gameoflife.controller
 
 import java.util.Observable
 
-import com.tokeh.gameoflife.model.{Figure, Grid, World}
+import com.tokeh.gameoflife.model.{Figure, Grid, Rules}
 
 trait Controller extends Observable {
 
@@ -28,5 +28,5 @@ trait Controller extends Observable {
 
   def stepperName: String
 
-  def configureStepper(worldParam: World, nameFunction: () => String): Unit
+  def configureStepper(worldParam: Rules, nameFunction: () => String): Unit
 }

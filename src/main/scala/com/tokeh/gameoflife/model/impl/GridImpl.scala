@@ -2,7 +2,7 @@ package com.tokeh.gameoflife.model.impl
 
 import com.tokeh.gameoflife.model.Grid
 
-case class GridImpl(cellsState: BitMatrix) extends Grid {
+class GridImpl(cellsState: BitMatrix) extends Grid {
   private val cells = new BitMatrix(cellsState.rows, cellsState.columns)
 
   for (i <- 0 until cells.rows) {
@@ -10,10 +10,6 @@ case class GridImpl(cellsState: BitMatrix) extends Grid {
       cells(i)(j) = cellsState(i)(j)
     }
   }
-
-  private def isRowIndexInBound(i: Int): Boolean = i >= 0 && i < cellsState.rows
-
-  private def isColumnIndexInBound(j: Int): Boolean = j >= 0 && j < cellsState.columns
 
   override def numberOfRows: Int = cells.rows
 

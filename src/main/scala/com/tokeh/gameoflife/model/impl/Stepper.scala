@@ -14,21 +14,20 @@ object Stepper {
 
   def step(grid: Grid, nextStateOfCell: (Grid, Int, Int) => Boolean): Grid = {
 
-    val futures = new ListBuffer[Future[Unit]]
-    var futures2 = Vector[Future[Unit]]()
+    var futures = Vector[Future[Unit]]()
     val newGrid = GridBuilder start grid
 
     val start = System.nanoTime()
 
     for (row <- 0 until grid.numberOfRows) {
       for (column <- 0 until grid.numberOfColumns) {
-        futures2 = futures2 :+ Future { newGrid.set(row, column, nextStateOfCell(grid, row, column)) }
+        futures = futures :+ Future { newGrid.set(row, column, nextStateOfCell(grid, row, column)) }
         //newGrid.set(row, column, nextStateOfCell(grid, row, column))
       }
     }
 
-    Await.ready(Future.sequence(futures2), Duration.Inf)
-    println(futures2.length)
+    Await.ready(Future.sequence(futures), Duration.Inf)
+    println(futures.length)
 
     // 20 x 20, 500mal, ohne: 272ms, mit: 1481ms
     // 50 x 50, 500mal, ohne: 1387ms, mit: 5639ms

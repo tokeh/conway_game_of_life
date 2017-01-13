@@ -10,10 +10,10 @@ class ControllerImpl extends Controller {
   var grid: Grid = createGrid(10, 20)
   var steppedGenerations = 0
   var gameIsRunning = true
-  var world: World = _
+  var rules: Rules = _
 
-  def configureStepper(worldParam: World, nameFunction: () => String): Unit = {
-    world = worldParam
+  def configureStepper(ruleParam: Rules, nameFunction: () => String): Unit = {
+    rules = ruleParam
     Stepper.name_(nameFunction)
   }
 
@@ -23,7 +23,7 @@ class ControllerImpl extends Controller {
   }
 
   override def stepOneGeneration(): Unit = {
-    grid = model.stepOneGeneration(grid, world.nextStateOfCell, Stepper.step)
+    grid = model.stepOneGeneration(grid, rules.nextStateOfCell, Stepper.step)
     steppedGenerations += 1
     setChangedAndNotify()
   }
