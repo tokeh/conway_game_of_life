@@ -12,4 +12,5 @@ object FiguresRegistry {
 
   def all: Iterable[Figure] = figures.values
 
+  def get(name: String): Option[Figure] = figures.get(name)
 }
