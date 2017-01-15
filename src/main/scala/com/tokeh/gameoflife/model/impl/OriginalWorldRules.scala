@@ -3,24 +3,23 @@ package com.tokeh.gameoflife.model.impl
 import com.tokeh.gameoflife.model.{Grid, Rules}
 
 class OriginalWorldRules() extends Rules {
-  override def name: () => String = () => "Original World (23/3)"
 
   override def nextStateOfCell: (Grid, Int, Int) => Boolean = {
     (grid: Grid, row: Int, column: Int) => {
 
       if (grid.get(row, column)) {
-        livingRule(numberOfLivingNeighbours(grid, row, column))
+        aliveRule(numberOfLivingNeighbours(grid, row, column))
       } else {
-        killingRule(numberOfLivingNeighbours(grid, row, column))
+        deadRule(numberOfLivingNeighbours(grid, row, column))
       }
     }
   }
 
-  private def livingRule: (Int) => Boolean = {
+  private def aliveRule: (Int) => Boolean = {
     (livingNeighbours: Int) => livingNeighbours == 2 || livingNeighbours == 3
   }
 
-  private def killingRule: (Int) => Boolean = {
+  private def deadRule: (Int) => Boolean = {
     (livingNeighbours: Int) => livingNeighbours == 3
   }
 

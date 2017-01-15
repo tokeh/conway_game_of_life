@@ -28,5 +28,5 @@ trait Controller extends Observable {
 
   def stepperName: String
 
-  def configureStepper(worldParam: Rules, nameFunction: () => String): Unit
+  def configureStepper(worldParam: Rules, name: String): Unit
 }

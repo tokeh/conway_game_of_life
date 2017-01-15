@@ -12,9 +12,9 @@ class ControllerImpl extends Controller {
   var gameIsRunning = true
   var rules: Rules = _
 
-  def configureStepper(ruleParam: Rules, nameFunction: () => String): Unit = {
-    rules = ruleParam
-    Stepper.name_(nameFunction)
+  def configureStepper(rulesFunction: Rules, name: String): Unit = {
+    rules = rulesFunction
+    Stepper.name = name
   }
 
   override def setGridSize(rows: Int, columns: Int): Unit = {

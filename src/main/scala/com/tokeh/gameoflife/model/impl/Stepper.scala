@@ -8,7 +8,8 @@ import scala.concurrent.{Await, Future}
 import scala.concurrent.ExecutionContext.Implicits.global
 
 object Stepper {
-  private var nameFunction: () => String = _
+  var name = ""
+
   private var average: Long = 0
   private var times = 0
 
@@ -40,10 +41,4 @@ object Stepper {
 
     newGrid.build
   }
-
-  def name: String = {
-    nameFunction()
-  }
-
-  def name_(nameFunc:() => String): Unit = nameFunction = nameFunc
 }

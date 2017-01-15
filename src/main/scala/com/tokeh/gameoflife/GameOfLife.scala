@@ -22,6 +22,6 @@ class GameOfLife {
   }
 
   private def setStepperRules(controller: Controller) = {
-    controller.configureStepper(world.rules, world.rules.name)
+    controller.configureStepper(world.rules, world.name)
   }
 }
