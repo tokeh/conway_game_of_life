@@ -25,8 +25,8 @@ class WorldSpec extends FeatureSpec with GivenWhenThen {
         val name = world.name
 
       Then("the world should return a function that gives out the world's name")
-      assert(name.isInstanceOf[String])
-      assert(name equals "Original World (23/3)")
+        assert(name.isInstanceOf[String])
+        assert(name equals "Original World (23/3)")
     }
   }
 
