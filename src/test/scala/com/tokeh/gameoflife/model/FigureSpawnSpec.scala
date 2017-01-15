@@ -1,8 +1,8 @@
 package com.tokeh.gameoflife.model
 
-import com.tokeh.gameoflife.UnitSpec
 import com.tokeh.gameoflife.model.impl.FiguresRegistry
-class FigureSpawnSpec extends UnitSpec {
+import org.scalatest.{FlatSpec, Matchers}
+class FigureSpawnSpec extends FlatSpec with Matchers {
 
   "spawnFigure(1,1)" should "spawn a figure at coordinates (1,1)" in {
     val grid = createGrid(10, 10)

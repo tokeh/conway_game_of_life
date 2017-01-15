@@ -2,11 +2,12 @@ package com.tokeh.gameoflife.controller.impl
 
 import java.util.{Observable, Observer}
 
-import com.tokeh.gameoflife.UnitSpec
 import com.tokeh.gameoflife.controller.Controller
-import com.tokeh.gameoflife.model.impl.{FiguresRegistry, OriginalWorldRules}
+import com.tokeh.gameoflife.model.OriginalWorld
+import com.tokeh.gameoflife.model.impl.FiguresRegistry
+import org.scalatest.{FlatSpec, Matchers}
 
-class GridControllerImplSpec extends UnitSpec {
+class GridControllerImplSpec extends FlatSpec with Matchers {
 
   "Modifying state" should "trigger an update to all observers" in {
     testObserverCalled((controller: Controller) => controller.stepOneGeneration())
@@ -17,8 +18,8 @@ class GridControllerImplSpec extends UnitSpec {
 
   def testObserverCalled(command: Controller => Unit): Unit = {
     val controller = new ControllerImpl()
-    val world = new OriginalWorldRules
-    controller.configureStepper(world, world.name)
+    val world = new OriginalWorld{}
+    controller.configureStepper(world.rules, world.name)
     var observerCalled = false
 
     controller.addObserver(new Observer {
@@ -34,8 +35,8 @@ class GridControllerImplSpec extends UnitSpec {
 
   "Getters and Setters" should "return correct values" in {
     val controller = new ControllerImpl()
-    val world = new OriginalWorldRules
-    controller.configureStepper(world, world.name)
+    val world = new OriginalWorld{}
+    controller.configureStepper(world.rules, world.name)
     controller.gameIsRunning should be(true)
     controller.quitGame()
     controller.gameIsRunning should be(false)

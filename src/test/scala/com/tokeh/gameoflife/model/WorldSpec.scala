@@ -17,16 +17,16 @@ class WorldSpec extends FeatureSpec with GivenWhenThen {
   feature("Name of world") {
     scenario("A world should have a name") {
       Given("a world with the name 'Original World (23/3)'")
-        val world = new OriginalWorldRules
-        assert(world.isInstanceOf[OriginalWorldRules])
+        val world = new OriginalWorld {}
+        assert(world.isInstanceOf[OriginalWorld])
         assert(world != null)
 
       When("the world's name is requested")
-        val nameFunction = world.name
+        val name = world.name
 
       Then("the world should return a function that gives out the world's name")
-      assert(nameFunction.isInstanceOf[() => String])
-      assert(nameFunction() equals "Original World (23/3)")
+      assert(name.isInstanceOf[String])
+      assert(name equals "Original World (23/3)")
     }
   }
 

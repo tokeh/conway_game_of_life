@@ -1,8 +1,8 @@
 package com.tokeh.gameoflife.model
 
-import com.tokeh.gameoflife.UnitSpec
 import com.tokeh.gameoflife.model.impl.GridBuilder
-class GridBuilderSpec extends UnitSpec {
+import org.scalatest.{FlatSpec, Matchers}
+class GridBuilderSpec extends FlatSpec with Matchers {
 
   "A GridBuilder" should "build a valid grid" in {
     val constructibleGrid = GridBuilder.start(2, 2)

@@ -1,9 +1,9 @@
 package com.tokeh.gameoflife.model
 
-import com.tokeh.gameoflife.UnitSpec
 import com.tokeh.gameoflife.model.impl.FiguresRegistry
+import org.scalatest.{FlatSpec, Matchers}
 
-class FiguresSpec extends UnitSpec {
+class FiguresSpec extends FlatSpec with Matchers {
 
   "A GliderFigure" should "have the name \"Glider\"" in {
     FiguresRegistry.get("Glider").get.name should be("Glider")

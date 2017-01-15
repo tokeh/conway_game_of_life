@@ -1,9 +1,10 @@
 package com.tokeh.gameoflife.model
 
-import com.tokeh.gameoflife.UnitSpec
 import com.tokeh.gameoflife.model.impl.BitMatrix
+import org.scalatest._
 
-class BitMatrixSpec extends UnitSpec {
+class BitMatrixSpec extends FlatSpec with Matchers {
+
   val matrix = new BitMatrix(2, 2)
 
   "A BitMatrix" should "have only false cells" in {
